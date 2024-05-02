@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Book } from '../book/book.model';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-products',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements AfterViewInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sharedService: SharedService) {}
 
   navigateToPreview(book: Book): void {
     this.router.navigate(['/preview', book.title]);
@@ -124,6 +125,6 @@ export class ProductsComponent implements AfterViewInit {
   ];
 
   handleAddToCart(book: Book): void {
-    console.log('Adding to cart:', book);
+    this.sharedService.addBook(book);
   }
 }

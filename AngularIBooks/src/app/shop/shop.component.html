@@ -6,6 +6,18 @@
     <title>Shop</title>
   </head>
   <body>
-    <div class="background"></div>
+    <div class="background">
+      <div *ngFor="let book of books" class="starting">
+        <div class="list">
+          <app-book
+            [imageSrc]="book.imageSrc"
+            [title]="book.title"
+            [cssClass]="book.cssClass"
+            [price]="book.price"
+          ></app-book>
+        </div>
+      </div>
+      <button class="checkout">Check Out</button>
+    </div>
   </body>
 </html>
